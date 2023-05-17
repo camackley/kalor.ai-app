@@ -1,8 +1,10 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:firebase_core/firebase_core.dart';
 
-import 'assets/styles/color_schemes.g.dart';
+import 'assets/styles/theme.dart';
+import 'assets/translations/kalor_localizations.dart';
+import 'conf/firebase_options.dart';
 import 'src/routes.dart';
 
 const filePath = '/Users/camackley/Documents/Projects/kalor.ai/star_lord';
@@ -24,10 +26,12 @@ class StarLordApp extends StatelessWidget {
     return MaterialApp(
       title: 'Kalor.ai',
       debugShowCheckedModeBanner: dotenv.env['STAR_LORD_ENVIRONMENT_MODE'] != 'production',
-      theme: ThemeData(useMaterial3: true, colorScheme: lightColorScheme),
-      darkTheme: ThemeData(useMaterial3: true, colorScheme: darkColorScheme),
+      theme: KalorTheme.lightTheme,
+      darkTheme: KalorTheme.darkTheme,
       themeMode: ThemeMode.dark,
-      initialRoute: '/home',
+      localizationsDelegates: KalorLocalizations.localizationsDelegates,
+      supportedLocales: KalorLocalizations.supportedLocales,
+      initialRoute: '/',
       routes: Routes.getRoutes(),
     );
   }
