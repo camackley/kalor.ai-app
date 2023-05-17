@@ -35,6 +35,8 @@ dependencies:
   mdi: ^5.0.0-nullsafety.0
   get_it: ^7.6.0
   flutter_dotenv: ^5.0.2
+  firebase_core: ^2.13.0
+  google_fonts: ^4.0.4
 
 dev_dependencies:
   flutter_test:

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "382282825278",
+    "project_id": "kalor-ai",
+    "storage_bucket": "kalor-ai.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:382282825278:android:453deb79ee481581bc9b6f",
+        "android_client_info": {
+          "package_name": "com.example.star_lord"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "382282825278-p592pvu4rtiio7ld9irf4cbl93g7gf45.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBXQ3YFzh43azM8O06r7aR0d1zSGfVcTJc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "382282825278-p592pvu4rtiio7ld9irf4cbl93g7gf45.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
