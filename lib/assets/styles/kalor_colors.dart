@@ -12,6 +12,8 @@ class ISurface {
 
 class IKalorColors {
   final ISurface surface;
+  final Color withe = const Color(0xFFFFFFFF);
+  final Color black = const Color(0xFF0C121B);
 
   IKalorColors({required this.surface});
 }

@@ -1,6 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:star_lord/bloc/auth/auth_bloc.dart';
+import 'package:star_lord/data/repositories/auth_repository.dart';
 
 import 'assets/styles/theme.dart';
 import 'assets/translations/kalor_localizations.dart';
@@ -23,16 +27,26 @@ class StarLordApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Kalor.ai',
-      debugShowCheckedModeBanner: dotenv.env['STAR_LORD_ENVIRONMENT_MODE'] != 'production',
-      theme: KalorTheme.lightTheme,
-      darkTheme: KalorTheme.darkTheme,
-      themeMode: ThemeMode.dark,
-      localizationsDelegates: KalorLocalizations.localizationsDelegates,
-      supportedLocales: KalorLocalizations.supportedLocales,
-      initialRoute: '/',
-      routes: Routes.getRoutes(),
+    final user = FirebaseAuth.instance.currentUser;
+
+    return RepositoryProvider(
+      create: (context) => AuthRepository(),
+      child: BlocProvider(
+        create: (context) => AuthBloc(
+          authRepository: RepositoryProvider.of<AuthRepository>(context),
+        ),
+        child: MaterialApp(
+          title: 'Kalor.ai',
+          debugShowCheckedModeBanner: dotenv.env['STAR_LORD_ENVIRONMENT_MODE'] != 'production',
+          theme: KalorTheme.lightTheme,
+          darkTheme: KalorTheme.darkTheme,
+          themeMode: ThemeMode.dark,
+          localizationsDelegates: KalorLocalizations.localizationsDelegates,
+          supportedLocales: KalorLocalizations.supportedLocales,
+          initialRoute: user == null ? '/' : '/home',
+          routes: Routes.routes,
+        ),
+      ),
     );
   }
 }
